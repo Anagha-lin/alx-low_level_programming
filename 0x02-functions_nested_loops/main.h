@@ -1,12 +1,5 @@
-#ifndef Main_H
-#define Main__H
-
-/*
- * File: Main.h
- * Auth: Anagha 
- * Desc: Header file containing declarations for all functions
- *       used as a prototype.
- */
+#ifndef main_h
+#define main_h
 
 int _putchar(char c);
 void print_alphabet(void);
