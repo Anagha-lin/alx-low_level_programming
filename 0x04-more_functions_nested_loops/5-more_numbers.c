@@ -1,20 +1,26 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * main - Prints all single digit numbers of base 10 starting from 0,
- *        only using putchar and without char variables.
- *
- * Return: Always 0.
- */
-int main(void)
+  * more_numbers - Print 10 times the numbers since 0 up to 14
+  *
+  * Return: 10 times of the numbers since 0 up to 14
+  */
+void more_numbers(void)
 {
-	int num;
+	int x, y;
 
-	for (num = 0; num < 10; num++)
-		putchar((num % 10) + '0');
+	for (x = 0; x < 10; x++)
+	{
+		for (y = 0; y <= 14; y++)
+		{
+			if (y > 9)
+			{
+				putchar((y / 10) + '0');
+			}
 
-	putchar('\n');
+			putchar((y % 10) + '0');
+		}
 
-	return (0);
+		putchar('\n');
+	}
 }
