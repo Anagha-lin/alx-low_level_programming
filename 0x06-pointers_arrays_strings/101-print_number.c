@@ -1,23 +1,23 @@
 #include "stdio.h"
-#include <stdio.h>
 /**
- * print_number - print an integer
- * @n: integer to print
+ * print_number - prints an integer;
+ * @n: integer to be printed;
  */
 void print_number(int n)
 {
+	unsigned int n1;
+
 	if (n < 0)
 	{
+		n1 = -n;
 		putchar('-');
-		if (n < -9)
-			print_number(n / -10);
-		putchar('0' - n % 10);
-	}
-	else
+	} else
 	{
-		if (n > 9)
-			print_number(n / 10);
-		putchar(n % 10 + '0');
+		n1 = n;
 	}
-}
 
+	if (n1 / 10)
+		print_number(n1 / 10);
+
+	putchar((n1 % 10) + '0');
+}
