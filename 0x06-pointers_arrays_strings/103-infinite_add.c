@@ -1,5 +1,4 @@
 #include "stdio.h"
-
 /**
  * rev_string - reverse array
  * @n: integer params
