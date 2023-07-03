@@ -1,9 +1,11 @@
-#include "stdio.h"
+#include <stdio.h>
 /**
-* set_string - the sum of the two diagonals
-* @s: ponter1 adress
-* @to: ponter2 value
-*/
+ * set_string - redirect.
+ * @s: double pointer to address
+ * @to: the original pointer
+ *
+ * Return: chessboard.
+ */
 void set_string(char **s, char *to)
 {
 	*s = to;
