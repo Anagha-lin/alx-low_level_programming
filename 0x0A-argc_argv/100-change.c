@@ -4,11 +4,11 @@
 #include <stdbool.h>
 
 /**
- * koboConverter - Helper function that does all the mathematics
+ * coinConverter - Helper function that does all the mathematics
  * @i: Passed in variable from main for calculations
  * Return: The number of coins needed minimum for the passed in variable
  */
-int koboConverter(int i)
+int coinConverter(int i)
 {
 	int count = 0;
 
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 		printf("0\n");
 	else
 	{
-		coin = koboConverter(i);
+		coin = coinConverter(i);
 
 		printf("%d\n", coin);
 	}
