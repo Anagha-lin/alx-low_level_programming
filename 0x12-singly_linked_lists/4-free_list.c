@@ -1,25 +1,22 @@
-#include <stdio.h>
+#include <stdlib.h>
 #include "lists.h"
 
 /**
- * print_list - function with one argument
- * @h: const pointer type
+ * free_list - function with one argument
+ * @head: pointer to list_t
  *
- * Description: prints all the elements of a list_t list
- * Return: number of nodes
+ * Description: frees a list
+ * Return: na
  */
-size_t print_list(const list_t *h)
+void free_list(list_t *head)
 {
-	unsigned int count = 0;
+	list_t *cursor;
 
-	while (h != NULL)
+	while (head)
 	{
-		if (h->str == NULL)
-			printf("[0] (nil)\n");
-		else
-			printf("[%d] %s\n", h->len, h->str);
-		h = h->next;
-		count++;
+		cursor = head->next;
+		free(head->str);
+		free(head);
+		head = cursor;
 	}
-	return (count);
 }
