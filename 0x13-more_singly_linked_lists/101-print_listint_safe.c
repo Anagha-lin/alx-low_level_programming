@@ -7,17 +7,17 @@
  **/
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t linkedlist = 0;
-	const listint_t *end_node = head;
+	size_t pichu = 0;
+	const listint_t *aux_node = head;
 
 	if (!head)
 		exit(98);
 
-	while (end_node)
+	while (aux_node)
 	{
-		printf("[%p] %i\n", (void *)end_node, end_node->n);
-		end_node = end_node->next;
-		linkedlist++;
+		printf("[%p] %i\n", (void *)aux_node, aux_node->n);
+		aux_node = aux_node->next;
+		pichu++;
 	}
-	return (linkedlist);
+	return (pichu);
 }
