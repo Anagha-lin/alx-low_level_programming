@@ -1,21 +1,21 @@
 #include "stdio.h"
 
 /**
- * binary_to_unit - converts a binary to an
+ * binary_to_uint - converts a binary number to
  * unsigned int.
- * @b: binary number.
+ * @b: binary number
  *
  * Return: unsigned int.
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int u;
+	unsigned int ui;
 	int len, binary;
 
 	if (b == NULL)
 		return (0);
 
-	u = 0;
+	ui = 0;
 
 	for (len = 0; b[len] != '\0'; len++)
 		;
@@ -29,9 +29,9 @@ unsigned int binary_to_uint(const char *b)
 
 		if (b[len] & 1)
 		{
-			u += binary;
+			ui += binary;
 		}
 	}
 
-	return (u);
+	return (ui);
 }
