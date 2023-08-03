@@ -7,23 +7,23 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int num;
+	unsigned long int revnum;
 	unsigned long int count;
 
-	num = count = 0;
+	revnum = count = 0;
 	if (n == 0)
 		putchar('0');
 	while (n > 0)
 	{
-		num = num << 1;
-		num += n & 1;
+		revnum = revnum << 1;
+		revnum += n & 1;
 		count++;
 		n = n >> 1;
 	}
-	while (num > 0)
+	while (revnum > 0)
 	{
-		putchar((num & 1) + '0');
-		num = num >> 1;
+		putchar((revnum & 1) + '0');
+		revnum = revnum >> 1;
 		count--;
 	}
 	if (count > 0)
