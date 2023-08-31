@@ -1,33 +1,47 @@
-#include "stdio.h"
+#include <stdlib.h>
 #include <stdio.h>
+#include "main.h"
 
 /**
- * binary_to_uint - function that convert a binary number to an unsigned int
- * @b: string to convert.
- *
- * Return: converted number or 0
- */
+  * binary_to_uint - Converts a binary number to an unsigned int
+  * @b: The binary string to converts
+  *
+  * Return: The positive number converted from a binary
+  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int num, i;
+	unsigned int len = 0, count = 0, sum = 0;
 
-	if (!b || !*b)
+	if (b == NULL)
 		return (0);
 
-	num = i = 0;
-	while (b[i])
+	len = _strlen(b);
+	while (len--)
 	{
-		if (b[i] > 49)
+		if (b[len] != 48 && b[len] != 49)
 			return (0);
-		else if (b[i] == 49)
-		{
-			num <<= 1;
-			num += 1;
-		}
-		else
-			num <<= 1;
-		i++;
+
+		if (b[len] == 49)
+			sum += 1 << count;
+
+		count++;
 	}
-	return (num);
+
+	return (sum);
 }
 
+/**
+  * _strlen - Returns the length of a string
+  * @s: String to count
+  *
+  * Return: String length
+  */
+int _strlen(const char *s)
+{
+	int c = 0;
+
+	while (s[c])
+		c++;
+
+	return (c);
+}
