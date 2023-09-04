@@ -1,38 +1,32 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
+#include "main.h"
 
 /**
- * create_file - creates a file
- * @filename: filename.
- * @text_content: content writed in the file.
+ * create_file - creates file
+ * @filename: the filename.
+ * @text_content: the content writed in the file.
  *
- * Return: 1 if it success. -1 if it fails.
+ * Return: 1 when success. -1 when fails.
  */
-int append_text_to_file(const char *filename, char *text_content)
+int create_file(const char *filename, char *text_content)
 {
+	int o, w, len = 0;
+
 	if (filename == NULL)
 		return (-1);
 
-	if (text_content == NULL)
-		return (1);
-
-	int file_descriptor;
-
-	file_descriptor = popen(filename, O_WRONLY | O_APPEND);
-
-	if (file_descriptor == -1)
-		return (-1);
-
-	ssize_t bytes_written = write(file_descriptor, text_content, strlen(text_content));
-
-	if (bytes_written == -1)
+	if (text_content != NULL)
 	{
-		close(file_descriptor);
-		return (-1);
+		for (len = 0; text_content[len];)
+			len++;
 	}
 
-	close(file_descriptor);
+	o = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	w = write(o, text_content, len);
+
+	if (o == -1 || w == -1)
+		return (-1);
+
+	close(o);
+
 	return (1);
 }
