@@ -1,68 +1,50 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "lists.h"
 
 /**
- * main - check the code
- *
- * Return: Always EXIT_SUCCESS.
- */
-int main(void)
+ * delete_dnodeint_at_index - deletes node at index of a dlistint_t list.
+ * @head: point to the list.
+ * @index: index of the node to delete.
+ * Return: 1 if it pass, -1 if it failed.
+ **/
+int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	dlistint_t *head;
+	dlistint_t *aux_node = *head;
+	dlistint_t *node_to_delete = *head;
+	unsigned int idx;
+	unsigned int cont = 0;
 
-	head = NULL;
-	add_dnodeint_end(&head, 0);
-	add_dnodeint_end(&head, 1);
-	add_dnodeint_end(&head, 2);
-	add_dnodeint_end(&head, 3);
-	add_dnodeint_end(&head, 4);
-	add_dnodeint_end(&head, 98);
-	add_dnodeint_end(&head, 402);
-	add_dnodeint_end(&head, 1024);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 5);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	return (0);
+	/* border case for empty list */
+	if (!(*head))
+		return (-1);
+
+	/* border case for delete at the beginning */
+	if (index == 0)
+	{
+		*head = node_to_delete->next;
+		free(node_to_delete);
+		if (*head)
+			(*head)->prev = NULL;
+		return (1);
+	}
+
+	/* search of an index to delete */
+	idx = index - 1;
+	while (aux_node && cont != idx)
+	{
+		cont++;
+		aux_node = aux_node->next;
+	}
+
+	/* in all case */
+	if (cont == idx && aux_node)
+	{
+		node_to_delete = aux_node->next;
+		if (node_to_delete->next)
+		node_to_delete->next->prev = aux_node;
+		aux_node->next = node_to_delete->next;
+		free(node_to_delete);
+		return (1);
+	}
+
+	return (-1);
 }
