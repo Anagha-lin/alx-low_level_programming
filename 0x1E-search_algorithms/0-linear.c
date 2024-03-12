@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * linear_search - Searches for a value in an array of integers using linear search
+ * linear_search - Searches  a value in an array of int
  * @array: Pointer to the first element of the array
  * @size: Number of elements in the array
  * @value: Value to search for
